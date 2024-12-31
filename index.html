@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Registration Form</title>
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/128/5569/5569750.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rye&display=swap" rel="stylesheet">
+
+    <style>
+        body{
+            color: rgb(48, 53, 54);
+            background: rgb(13,132,240);
+            background: linear-gradient(90deg, rgba(13,132,240,1) 2%, rgba(255,255,255,1) 47%, rgba(59,155,248,1) 96%);
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;
+        }
+        fieldset{
+            width: 400px;
+           border: 4px solid black;
+           border-radius: 20px;
+        }
+        input:required{
+            border: 1.6px solid red;
+        }
+        input:optional{
+            border: 1.6px dashed green;
+        }
+        input[readonly]{
+            background-color: rgb(180, 210, 150);
+            color: black;
+            font-weight: 600;
+        }
+        select{
+            background-color: rgb(215, 217, 171);
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        input[type="radio"]:checked{
+            height: 15px;
+            width: 15px;
+
+        }
+        input[type="radio"]:checked +label{
+           font-weight: 30px;
+           color: rgb(201, 83, 83);
+        }
+        p{
+            display: none;
+        }
+        input:hover+p{
+            display: inline;
+            color: rgb(53, 59, 43);
+            background-color: rgb(227, 77, 28);
+            font-size: smaller;
+            font-weight: 400;
+
+        }
+        input:focus{
+            background-color: bisque;
+            color: black;
+            font-weight: 600;
+        }
+
+        img{
+            display: none;
+        }
+        input[type="Email"]:focus:valid~img.valid
+        {
+            display: inline;
+            height: 15px;
+            width: 15px;
+        }
+        input[type="Email"]:focus:invalid~img.invalid
+        {
+            display: inline;
+            height: 20px;
+            width: 20px;
+        }
+        input[type="number"]:focus:in-range:valid~img.valid{
+            display: inline;
+            height: 15px;
+            width: 15px;
+        }
+        input[type="number"]:focus:out-of-range:invalid~img.invalid{
+            display: inline;
+            height: 20px;
+            width: 20px;
+        }
+
+        .dis{
+            display: flex;
+        }
+
+        .heading{
+            font-family: "Rye", serif;
+            color: rgb(57, 31, 31);
+        }
+        .clickhere{
+            color: rgb(128, 38, 98);
+            font-weight: 550;
+            background-color: rgb(207, 194, 165);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 20px;
+            color: #555;
+            font-size: 0.9em;
+        }
+        .top{
+            letter-spacing: 10px;
+            color:rgb(230, 19, 19) ;
+            font-weight: 900;
+        }
+
+       
+
+    </style>
+</head>
+<body >
+    <center><h4 class="top">TAP ACADEMY</h4></center>
+    <marquee behavior="" direction="right"><center><h1 class="heading">Course Registration Form</h1> <img class="dis" src="data:image/jpeg;base64,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" alt="Image Broke" width="80"></center></marquee>
+
+<form action="">
+   <fieldset>
+    <legend>Personal details</legend>
+    <table>
+        <tr>
+            <td> <label for="">Name</label></td>
+            <td><input type="text" placeholder="EX-Vishwa" name="fn" required><p>Enter Your Name</p></td>
+        </tr>
+        <tr>
+            <td> <label for="">Surname</label></td>
+            <td> <input type="text" placeholder="EX-M" name="ln"><p>Enter your Surname</p></td>
+        </tr>
+        <tr>
+            <td><label for="">Mobile No.</label></td>
+            <td><input type="tel" placeholder="0123456789"  name="tn"required> <p>Enter your Mobile No</p></td>
+        </tr>
+        <tr>
+            <td><label for="">Email-id</label></td>
+            <td><input type="email" placeholder="EX-xyz@gmail.com" name="e"required> <p>Enter your Email-id</p> 
+                <img src="https://cdn-icons-png.flaticon.com/128/4315/4315445.png"  class="valid"> 
+                 <img src="https://cdn-icons-png.flaticon.com/128/10621/10621089.png" class="invalid"></td>
+        </tr>
+        <tr>
+            <td><label for="">Password</label></td>
+            <td><input type="password" required>
+            <p>Atleast provis 1 Uppercase,1 Lowercase,1 Special char  </p>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="">Confirm Password</label></td>
+            <td><input type="password" required> <p>Confirm your password</p></td>
+        </tr>
+        <tr>
+            <td><label for="">DOB</label></td>
+            <td><input type="date" required><p>Select your DOB</p></td>
+        </tr>
+        <tr>
+            <td><label for="">Age</label></td>
+            <td><input type="number" name="" id="" required min="18" max="100"> <p>Enter yor Age</p>
+                <img src="https://cdn-icons-png.flaticon.com/128/4315/4315445.png"  class="valid"> 
+                <img src="https://cdn-icons-png.flaticon.com/128/10621/10621089.png" class="invalid">
+            
+            </td>
+        </tr>
+
+        <tr>
+            <td><label for="">Gender</label></td>
+            <td>
+                <input type="radio" name="g"><label for="">Male</label>
+                <input type="radio" name="g"><label for="">Female</label>
+                <input type="radio" name="g"><label for="">other</label>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="">Country</label></td>
+            <td><select >
+                <option value="">India</option>
+                <option value="">USA</option>
+                <option value="">England</option>
+                <option value="">Australia</option>
+            </select></td>
+        </tr>
+        <tr>
+            <td> <label for="">Upload Image</label></td>
+            <td><input type="file"> <br></td>
+        </tr>
+        <tr>
+            <td><input type="reset"></td>
+        </tr>
+        </table>
+   </fieldset>
+<fieldset>
+    <legend>Course Details</legend>
+    <table>
+      <tr>
+        <td> <label for="">select Course</label></td>
+      </tr>
+       <tr>
+        <td><select name="" id="">
+            <option value="">Java Full stack</option>
+            <option value="">python Full stack</option>
+        </select></td>
+       </tr>
+     <tr>
+        <td> <Label>Delivery Mode</Label>
+            <input type="radio" name="mode">
+            <label for="">Online</label>
+        <input type="radio" name="mode" >
+              <label for="">Offline</label> 
+        </td>
+        
+     </tr>
+   
+  
+        <tr>
+            <td>
+                <label for="">Institue Name</label>
+            
+            
+                <input type="text" placeholder="TAP ACADEMY"  value="TAP ACADEMY" readonly> <br>
+            </td>
+        </tr>
+       
+       <tr>
+        <td><label for="">Comment </label> <br></td>
+       </tr>
+    
+    <tr>
+        <td><textarea name="" id=""></textarea></td>
+    </tr>
+
+</table>
+
+</fieldset>
+<table>
+    <tr>
+        <td class="submitt"><input type="submit"></td>
+    </tr>
+    
+  <tr>
+    <td><button><a class="submitt" href=" https://thetapacademy.com/" class="clickhere">Click Here To More</a></button></td>
+    
+</tr>
+
+ 
+
+
+</table>
+
+
+</form>
+
+
+<div class="copyright">
+    &copy; 2024 By Vishwanath M. All Rights Reserved.
+</div>
+
+</body>
+
+
+</html>
